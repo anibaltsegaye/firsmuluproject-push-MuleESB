@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="07e6bc36-e9b1-44cd-b0da-94195049dcfa" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="first_projectFlow1" doc:id="93ea990a-c672-4dc7-b57b-fcabb9e5ef01" >
+		<http:listener doc:name="Listener" doc:id="626023a7-f470-4216-8601-b6d49050b511" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-payload value='#["Hello World"]' doc:name="Set Payload" doc:id="885a7ca4-8c4a-4233-84ee-69bcf3935ef1" />
+		<set-payload value='#[payload ++ " and batch craft28"]' doc:name="Set Payload" doc:id="f4c40d60-bed5-45da-99af-5c5309d27a5b" />
+	</flow>
+</mule>
